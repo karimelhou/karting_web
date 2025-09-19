@@ -1,0 +1,153 @@
+{
+  "navigation": {
+    "home": "Home",
+    "experience": "Experience",
+    "tracks": "Tracks",
+    "offers": "Offers & Pricing",
+    "sessions": "Sessions",
+    "grandPrix": "Grand Prix",
+    "drivingSchool": "Racing School",
+    "groups": "Groups & Corporate",
+    "booking": "Tickets / Book",
+    "gallery": "Gallery",
+    "restaurant": "Restaurant",
+    "events": "Events",
+    "news": "News",
+    "contact": "Contact",
+    "legal": "Legal notice",
+    "privacy": "Privacy policy",
+    "terms": "Terms of sale",
+    "jobs": "Careers",
+    "app": "Mobile app",
+    "gifts": "Gift cards"
+  },
+  "common": {
+    "book": "Book now",
+    "discover": "Discover",
+    "learnMore": "Learn more",
+    "viewAll": "View all",
+    "ctaPrimary": "Start your engine",
+    "ctaSecondary": "Explore offers",
+    "open": "Open",
+    "closed": "Closed",
+    "weather": "Weather",
+    "language": "Language",
+    "priceFrom": "From",
+    "perPerson": "per person",
+    "editPlaceholder": "(editable data)",
+    "loading": "Loading...",
+    "success": "Thank you! We'll get back to you shortly.",
+    "error": "Something went wrong. Please try again.",
+    "cookieMessage": "We use cookies to measure traffic and improve your experience.",
+    "cookieAccept": "Accept",
+    "cookieDecline": "Decline",
+    "gaNotice": "Google Analytics 4 activates after consent.",
+    "membersArea": "Members area (coming soon)",
+    "ancv": "ANCV holiday vouchers accepted",
+    "ffsa": "FFSA approved"
+  },
+  "home": {
+    "tagline": "Premium karting between Annecy & Aix-les-Bains",
+    "heroTitle": "Two tracks, one thrilling energy",
+    "heroSubtitle": "Leisure sessions, Grand Prix, racing school and Pub Le Melbourne for thrilling moments in total safety.",
+    "heroCtas": {
+      "primary": "Book now",
+      "secondary": "See offers",
+      "tertiary": "Explore tracks"
+    },
+    "tiles": [
+      {
+        "title": "More than karting",
+        "description": "Coaching, private nights, digital tickets and connected experiences."
+      },
+      {
+        "title": "Safety first",
+        "description": "Briefings, provided gear, FFSA certified staff."
+      },
+      {
+        "title": "Club atmosphere",
+        "description": "Pub Le Melbourne 7/7: burgers, tapas and signature cocktails."
+      }
+    ],
+    "testimonialTitle": "They loved the rush",
+    "partners": "Partners & labels",
+    "melbourne": {
+      "title": "Pub Le Melbourne",
+      "description": "F1 meets street art mood, pool table, darts and track view. Hours editable {edit}.",
+      "cta": "Discover the restaurant"
+    },
+    "leaderboard": {
+      "title": "Lap time leaderboard",
+      "subtitle": "Top drivers (demo data)",
+      "track": "Track",
+      "driver": "Driver",
+      "bestTime": "Best lap",
+      "date": "Date"
+    }
+  },
+  "footer": {
+    "address": "Les Pérouses, 74150 Rumilly, France",
+    "phone": "+33 (0)4 50 64 62 90",
+    "hours": "Indicative hours: 10am-10pm (update as needed)",
+    "socialTitle": "Follow us"
+  },
+  "forms": {
+    "date": "Date",
+    "time": "Timeslot",
+    "participants": "Participants",
+    "adults": "Adults",
+    "teens": "Teens",
+    "kids": "Kids (3+)",
+    "package": "Package",
+    "addons": "Add-ons",
+    "restaurantAddon": "Add restaurant booking",
+    "submit": "Submit",
+    "next": "Next",
+    "back": "Back",
+    "estimate": "Estimate",
+    "total": "Estimated total",
+    "company": "Company",
+    "duration": "Duration",
+    "catering": "Catering",
+    "meetingRoom": "Meeting room",
+    "message": "Message",
+    "email": "Email",
+    "phone": "Phone",
+    "name": "Name",
+    "privacy": "I accept the privacy policy",
+    "send": "Send",
+    "successWizard": "Your request has been received. Our team will contact you."
+  },
+  "reservation": {
+    "title": "Tickets & booking",
+    "subtitle": "Build your session in a few steps and get an instant estimate.",
+    "steps": {
+      "when": "When?",
+      "who": "Who's coming?",
+      "what": "Which package?",
+      "review": "Summary"
+    },
+    "packages": {
+      "session": "Open session",
+      "mini": "Mini Grand Prix",
+      "grand": "Grand Prix",
+      "maxi": "Maxi Grand Prix"
+    }
+  },
+  "groups": {
+    "title": "Express quote for groups",
+    "subtitle": "Estimate your team building, bachelor/hen party or seminar in minutes.",
+    "cta": "Request quote"
+  },
+  "trackStatus": {
+    "title": "Track status",
+    "open": "Track open",
+    "closed": "Track closed",
+    "weather": "Local weather",
+    "updated": "Updated",
+    "nextSlot": "Next slot"
+  },
+  "faq": {
+    "title": "Frequently asked questions"
+  }
+}

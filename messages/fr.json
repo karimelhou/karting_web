@@ -1,0 +1,153 @@
+{
+  "navigation": {
+    "home": "Accueil",
+    "experience": "Expérience",
+    "tracks": "Pistes",
+    "offers": "Offres & Tarifs",
+    "sessions": "Sessions",
+    "grandPrix": "Grand Prix",
+    "drivingSchool": "École de pilotage",
+    "groups": "Groupes & Entreprises",
+    "booking": "Billetterie / Réserver",
+    "gallery": "Galerie",
+    "restaurant": "Restaurant",
+    "events": "Événements",
+    "news": "Actualités",
+    "contact": "Contact",
+    "legal": "Mentions légales",
+    "privacy": "Politique de confidentialité",
+    "terms": "CGV",
+    "jobs": "Recrutement",
+    "app": "Application mobile",
+    "gifts": "Bons cadeaux"
+  },
+  "common": {
+    "book": "Réserver",
+    "discover": "Découvrir",
+    "learnMore": "En savoir plus",
+    "viewAll": "Tout voir",
+    "ctaPrimary": "Prendre le départ",
+    "ctaSecondary": "Explorer les offres",
+    "open": "Ouvert",
+    "closed": "Fermé",
+    "weather": "Météo",
+    "language": "Langue",
+    "priceFrom": "À partir de",
+    "perPerson": "par personne",
+    "editPlaceholder": "(données éditables)",
+    "loading": "Chargement...",
+    "success": "Merci ! Nous revenons vers vous au plus vite.",
+    "error": "Une erreur est survenue. Veuillez réessayer.",
+    "cookieMessage": "Nous utilisons des cookies pour mesurer l'audience et améliorer l'expérience.",
+    "cookieAccept": "Accepter",
+    "cookieDecline": "Refuser",
+    "gaNotice": "Google Analytics 4 activé après consentement.",
+    "membersArea": "Espace membres (bientôt)",
+    "ancv": "Chèques vacances ANCV acceptés",
+    "ffsa": "Homologation FFSA"
+  },
+  "home": {
+    "tagline": "Karting premium entre Annecy et Aix-les-Bains",
+    "heroTitle": "Deux pistes, une énergie unique",
+    "heroSubtitle": "Sessions loisirs, Grand Prix, école de pilotage et restaurant Pub Le Melbourne pour des sensations en toute sécurité.",
+    "heroCtas": {
+      "primary": "Réserver maintenant",
+      "secondary": "Voir les offres",
+      "tertiary": "Explorer les pistes"
+    },
+    "tiles": [
+      {
+        "title": "+ de Karting Évasion",
+        "description": "Coaching, soirées privées, billetterie digitale et expérience connectée."
+      },
+      {
+        "title": "Sécurité renforcée",
+        "description": "Briefings, équipements fournis, équipe encadrante FFSA."
+      },
+      {
+        "title": "Ambiance club",
+        "description": "Pub Le Melbourne 7/7 : burgers, tapas et cocktails signature."
+      }
+    ],
+    "testimonialTitle": "Ils ont vibré avec nous",
+    "partners": "Nos partenaires & labels",
+    "melbourne": {
+      "title": "Pub Le Melbourne",
+      "description": "Ambiance F1 x street art, billard, fléchettes et vue piste. Horaires modulables {edit}.",
+      "cta": "Découvrir le restaurant"
+    },
+    "leaderboard": {
+      "title": "Leaderboard temps au tour",
+      "subtitle": "Top pilotes (données démo)",
+      "track": "Piste",
+      "driver": "Pilote",
+      "bestTime": "Meilleur temps",
+      "date": "Date"
+    }
+  },
+  "footer": {
+    "address": "Les Pérouses, 74150 Rumilly, Savoie",
+    "phone": "04 50 64 62 90",
+    "hours": "Horaires indicatifs : 10h-22h (à confirmer)",
+    "socialTitle": "Suivez-nous"
+  },
+  "forms": {
+    "date": "Date",
+    "time": "Créneau horaire",
+    "participants": "Participants",
+    "adults": "Adultes",
+    "teens": "Ados",
+    "kids": "Enfants (3+)",
+    "package": "Formule",
+    "addons": "Options",
+    "restaurantAddon": "Ajouter la réservation restaurant",
+    "submit": "Valider",
+    "next": "Suivant",
+    "back": "Retour",
+    "estimate": "Estimation",
+    "total": "Total estimé",
+    "company": "Entreprise",
+    "duration": "Durée",
+    "catering": "Restauration",
+    "meetingRoom": "Salle de séminaire",
+    "message": "Message",
+    "email": "E-mail",
+    "phone": "Téléphone",
+    "name": "Nom",
+    "privacy": "J'accepte la politique de confidentialité",
+    "send": "Envoyer",
+    "successWizard": "Votre demande est bien enregistrée. Notre équipe vous recontacte."
+  },
+  "reservation": {
+    "title": "Billetterie & réservation",
+    "subtitle": "Composez votre session en quelques étapes et recevez une estimation instantanée.",
+    "steps": {
+      "when": "Quand ?",
+      "who": "Qui vient ?",
+      "what": "Quelle formule ?",
+      "review": "Résumé"
+    },
+    "packages": {
+      "session": "Session libre",
+      "mini": "Mini Grand Prix",
+      "grand": "Grand Prix",
+      "maxi": "Maxi Grand Prix"
+    }
+  },
+  "groups": {
+    "title": "Devis express groupes & entreprises",
+    "subtitle": "Estimez votre événement team building, EVG/EVJF ou séminaire en quelques clics.",
+    "cta": "Demander le devis"
+  },
+  "trackStatus": {
+    "title": "État des pistes",
+    "open": "Piste ouverte",
+    "closed": "Piste fermée",
+    "weather": "Météo locale",
+    "updated": "Mise à jour",
+    "nextSlot": "Prochain créneau"
+  },
+  "faq": {
+    "title": "Questions fréquentes"
+  }
+}
