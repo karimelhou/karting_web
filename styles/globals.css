@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 225 36% 6%;
+  --foreground: 210 40% 98%;
+  --card: 222 47% 11%;
+  --card-foreground: 210 40% 96%;
+  --popover: 225 36% 8%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 199 100% 50%;
+  --primary-foreground: 220 40% 16%;
+  --secondary: 217 33% 17%;
+  --secondary-foreground: 210 40% 96%;
+  --muted: 220 33% 17%;
+  --muted-foreground: 215 20% 65%;
+  --accent: 35 100% 66%;
+  --accent-foreground: 210 40% 12%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217 33% 17%;
+  --input: 217 33% 17%;
+  --ring: 199 89% 48%;
+  --radius: 0.75rem;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-[radial-gradient(circle_at_top,_#0b1120_0%,_#080b14_45%,_#04060b_100%)] text-foreground font-sans antialiased;
+}
+
+a {
+  @apply text-primary transition-colors hover:text-primary/80;
+}
+
+::selection {
+  background: rgba(14, 165, 233, 0.35);
+  color: #0b1120;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    font-feature-settings: 'kern';
+  }
+}
+
+@layer components {
+  .container-grid {
+    @apply mx-auto w-full max-w-6xl px-6 sm:px-8 lg:px-10;
+  }
+  .section-heading {
+    @apply text-3xl font-heading font-semibold tracking-tight text-foreground sm:text-4xl;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

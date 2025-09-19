@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Lead {
+  id           Int      @id @default(autoincrement())
+  company      String
+  participants Int
+  duration     Int
+  catering     Boolean
+  meetingRoom  Boolean
+  email        String
+  phone        String
+  message      String?
+  createdAt    DateTime @default(now())
+}
+
+model ReservationRequest {
+  id         Int      @id @default(autoincrement())
+  date       String
+  time       String
+  packageKey String
+  restaurant Boolean
+  adults     Int
+  teens      Int
+  kids       Int
+  email      String
+  phone      String
+  name       String
+  createdAt  DateTime @default(now())
+}
+
+model ContactRequest {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  phone     String
+  message   String
+  createdAt DateTime @default(now())
+}
