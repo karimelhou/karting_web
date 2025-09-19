@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 
 import { loadCollection, loadMDXFile } from '@/lib/mdx';
+import { articleSchema } from '@/lib/schema';
 import { buildPageMetadata } from '@/lib/seo';
 
 export async function generateStaticParams() {
@@ -30,6 +31,16 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     const { content, frontmatter } = await loadMDXFile(`blog/${params.slug}`);
     return (
       <div className="container-grid space-y-6 pb-20">
+        <script type="application/ld+json" suppressHydrationWarning>
+          {JSON.stringify(
+            articleSchema({
+              title: frontmatter.title,
+              description: frontmatter.excerpt ?? '',
+              slug: params.slug,
+              image: frontmatter.cover as string | undefined,
+            }),
+          )}
+        </script>
         <header className="space-y-3">
           <p className="text-sm uppercase tracking-[0.3em] text-primary/80">Actualités</p>
           <h1 className="section-heading">{frontmatter.title}</h1>

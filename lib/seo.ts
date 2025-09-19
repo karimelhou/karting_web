@@ -1,5 +1,5 @@
-import { Metadata } from 'next';
-import { NextSeoProps } from 'next-seo';
+import type { Metadata, Viewport } from 'next';
+import type { NextSeoProps } from 'next-seo';
 
 import { getSiteUrl } from './utils';
 
@@ -21,7 +21,6 @@ export const defaultMetadata: Metadata = {
     'pub le melbourne',
   ],
   authors: [{ name: 'Karting Évasion Rumilly' }],
-  themeColor: '#0ea5ff',
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
@@ -40,6 +39,10 @@ export const defaultMetadata: Metadata = {
       en: `${siteUrl}/en`,
     },
   },
+};
+
+export const defaultViewport: Viewport = {
+  themeColor: '#0ea5ff',
 };
 
 export const defaultNextSeo: NextSeoProps = {

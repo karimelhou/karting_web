@@ -127,6 +127,7 @@
       "what": "Quelle formule ?",
       "review": "Résumé"
     },
+    "progressLabel": "Étape {current} / {total} — {step}",
     "packages": {
       "session": "Session libre",
       "mini": "Mini Grand Prix",
@@ -143,11 +144,32 @@
     "title": "État des pistes",
     "open": "Piste ouverte",
     "closed": "Piste fermée",
+    "statusWeather": "Météo défavorable",
     "weather": "Météo locale",
     "updated": "Mise à jour",
     "nextSlot": "Prochain créneau"
   },
   "faq": {
     "title": "Questions fréquentes"
+  },
+  "events": {
+    "title": "Agenda à venir",
+    "intro": "Adaptez cette section avec votre calendrier réel : stages, nocturnes, afterworks.",
+    "filters": {
+      "tracks": {
+        "label": "Piste",
+        "all": "Toutes les pistes",
+        "550": "550 m",
+        "1150": "1150 m"
+      },
+      "categories": {
+        "label": "Catégorie",
+        "all": "Tous les formats",
+        "family": "Famille & kids",
+        "competition": "Compétition",
+        "corporate": "Entreprises"
+      },
+      "empty": "Aucun événement pour ces filtres. Contactez-nous pour créer votre animation."
+    }
   }
 }

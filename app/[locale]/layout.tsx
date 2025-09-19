@@ -5,9 +5,10 @@ import type { ReactNode } from 'react';
 import { LocaleProvider } from '@/components/providers/locale-provider';
 import { PwaProvider } from '@/components/providers/pwa-provider';
 import { locales } from '@/lib/i18n/request';
-import { defaultMetadata } from '@/lib/seo';
+import { defaultMetadata, defaultViewport } from '@/lib/seo';
 
 export const metadata: Metadata = defaultMetadata;
+export const viewport = defaultViewport;
 export const dynamic = 'force-dynamic';
 
 export function generateStaticParams() {

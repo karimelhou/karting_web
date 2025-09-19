@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { Link, usePathname } from '@/lib/i18n/navigation';
 import { cn } from '@/lib/utils';
@@ -11,10 +11,26 @@ import { cn } from '@/lib/utils';
 import { Button } from './button';
 import { LangSwitcher } from './LangSwitcher';
 
-const links = [
+type NavItem = {
+  href: string;
+  key: string;
+  children?: NavItem[];
+};
+
+const navItems: NavItem[] = [
+  { href: '/', key: 'navigation.home' },
   { href: '/experience', key: 'navigation.experience' },
   { href: '/pistes', key: 'navigation.tracks' },
-  { href: '/offres', key: 'navigation.offers' },
+  {
+    href: '/offres',
+    key: 'navigation.offers',
+    children: [
+      { href: '/offres/sessions', key: 'navigation.sessions' },
+      { href: '/offres/grand-prix', key: 'navigation.grandPrix' },
+      { href: '/offres/ecole-pilotage', key: 'navigation.drivingSchool' },
+      { href: '/offres/groupes-entreprises', key: 'navigation.groups' },
+    ],
+  },
   { href: '/billetterie', key: 'navigation.booking' },
   { href: '/galerie', key: 'navigation.gallery' },
   { href: '/restaurant', key: 'navigation.restaurant' },
@@ -29,6 +45,8 @@ export function Nav() {
   const { scrollY } = useScroll();
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
+  const [isOffersOpen, setOffersOpen] = useState(false);
+  const offersTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     return scrollY.on('change', (latest) => {
@@ -38,6 +56,7 @@ export function Nav() {
 
   useEffect(() => {
     setMenuOpen(false);
+    setOffersOpen(false);
   }, [pathname]);
 
   const height = useTransform(scrollY, [0, 120], [88, 64]);
@@ -67,19 +86,85 @@ export function Nav() {
             <span className="font-semibold text-base text-foreground">Rumilly</span>
           </div>
         </Link>
-        <nav className="hidden items-center gap-6 lg:flex">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                'text-sm font-medium text-foreground/80 transition hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-full px-3 py-2',
-                pathname === link.href && 'text-foreground',
-              )}
-            >
-              {t(link.key as Parameters<typeof t>[0])}
-            </Link>
-          ))}
+        <nav
+          className="hidden items-center gap-4 lg:flex"
+          aria-label="Navigation principale"
+        >
+          {navItems.map((item) => {
+            if (!item.children) {
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={cn(
+                    'rounded-full px-3 py-2 text-sm font-medium text-foreground/80 transition hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+                    pathname === item.href && 'text-foreground',
+                  )}
+                >
+                  {t(item.key as Parameters<typeof t>[0])}
+                </Link>
+              );
+            }
+
+            return (
+              <div
+                key={item.href}
+                className="relative"
+                onMouseEnter={() => {
+                  if (offersTimeout.current) clearTimeout(offersTimeout.current);
+                  setOffersOpen(true);
+                }}
+                onMouseLeave={() => {
+                  offersTimeout.current = setTimeout(() => setOffersOpen(false), 150);
+                }}
+                onFocusCapture={() => setOffersOpen(true)}
+                onBlurCapture={() => {
+                  offersTimeout.current = setTimeout(() => setOffersOpen(false), 150);
+                }}
+              >
+                <button
+                  type="button"
+                  className={cn(
+                    'flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium text-foreground/80 transition hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+                    pathname.startsWith(item.href) && 'text-foreground',
+                  )}
+                  aria-expanded={isOffersOpen}
+                  aria-haspopup="true"
+                  onClick={() => setOffersOpen((prev) => !prev)}
+                >
+                  {t(item.key as Parameters<typeof t>[0])}
+                  <span aria-hidden>▾</span>
+                </button>
+                {isOffersOpen && (
+                  <div
+                    className="absolute left-1/2 top-full z-50 mt-3 w-72 -translate-x-1/2 rounded-2xl border border-white/10 bg-black/85 p-4 shadow-xl backdrop-blur"
+                    onMouseEnter={() => {
+                      if (offersTimeout.current) clearTimeout(offersTimeout.current);
+                      setOffersOpen(true);
+                    }}
+                  >
+                    <p className="text-xs uppercase tracking-[0.3em] text-primary/80">
+                      {t('navigation.offers')}
+                    </p>
+                    <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                      {item.children.map((child) => (
+                        <li key={child.href}>
+                          <Link
+                            href={child.href}
+                            className="flex flex-col rounded-xl px-3 py-2 hover:bg-primary/10 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
+                          >
+                            <span className="font-semibold text-foreground">
+                              {t(child.key as Parameters<typeof t>[0])}
+                            </span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </nav>
         <div className="hidden items-center gap-4 lg:flex">
           <LangSwitcher />
@@ -105,14 +190,28 @@ export function Nav() {
       >
         <div className="container-grid flex flex-col gap-4 py-6">
           <LangSwitcher />
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="rounded-xl border border-transparent bg-surface/80 px-4 py-3 text-sm font-semibold text-foreground hover:border-primary/50"
-            >
-              {t(link.key as Parameters<typeof t>[0])}
-            </Link>
+          {navItems.map((item) => (
+            <div key={item.href} className="space-y-2">
+              <Link
+                href={item.href}
+                className="block rounded-xl border border-transparent bg-surface/80 px-4 py-3 text-sm font-semibold text-foreground hover:border-primary/50"
+              >
+                {t(item.key as Parameters<typeof t>[0])}
+              </Link>
+              {item.children ? (
+                <div className="ml-4 space-y-1 text-xs text-muted-foreground">
+                  {item.children.map((child) => (
+                    <Link
+                      key={child.href}
+                      href={child.href}
+                      className="block rounded-lg px-3 py-2 hover:bg-primary/10"
+                    >
+                      {t(child.key as Parameters<typeof t>[0])}
+                    </Link>
+                  ))}
+                </div>
+              ) : null}
+            </div>
           ))}
           <Button asChild size="lg">
             <Link href="/billetterie">{t('common.book')}</Link>

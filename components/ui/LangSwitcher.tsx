@@ -24,7 +24,7 @@ export function LangSwitcher() {
       }
       disabled={isPending}
     >
-      <SelectTrigger className="w-32">
+      <SelectTrigger className="w-32" aria-label="Choix de la langue">
         <SelectValue />
       </SelectTrigger>
       <SelectContent>

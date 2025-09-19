@@ -1,7 +1,8 @@
 {
   "name": "Karting Évasion Rumilly",
   "short_name": "Karting Rumilly",
-  "start_url": "/",
+  "description": "Deux pistes outdoor, Grand Prix, école de pilotage et restaurant Pub Le Melbourne à Rumilly.",
+  "start_url": "/fr",
   "display": "standalone",
   "background_color": "#05070f",
   "theme_color": "#0ea5ff",

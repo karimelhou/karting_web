@@ -1,7 +1,8 @@
 import { getTranslations } from 'next-intl/server';
 
 import { GroupQuote } from '@/components/ui/GroupQuote';
-import { HeroVideo } from '@/components/ui/HeroVideo';
+import { HeroMedia } from '@/components/ui/HeroMedia';
+import { LeaderboardChart } from '@/components/ui/LeaderboardChart';
 import { LightboxGallery } from '@/components/ui/Lightbox';
 import { ReservationWizard } from '@/components/ui/ReservationWizard';
 import { TestimonialCarousel } from '@/components/ui/TestimonialCarousel';
@@ -25,7 +26,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
       <script type="application/ld+json" suppressHydrationWarning>
         {JSON.stringify(schema)}
       </script>
-      <HeroVideo />
+      <HeroMedia />
       <TrackStatus />
       <section className="grid gap-8 md:grid-cols-3">
         {(t.raw('tiles') as Array<{ title: string; description: string }>).map((tile) => (
@@ -81,34 +82,39 @@ export default async function HomePage({ params }: { params: { locale: string } 
           </p>
           <TestimonialCarousel />
         </div>
-        <div>
-          <h3 className="section-heading text-2xl">Leaderboard démo</h3>
-          <p className="text-sm text-muted-foreground">{t('partners')}</p>
-          <div className="mt-4 overflow-hidden rounded-2xl border border-white/10">
-            <table className="w-full text-left text-sm text-muted-foreground">
-              <thead className="bg-black/40 text-xs uppercase tracking-[0.3em] text-muted-foreground">
-                <tr>
-                  <th className="px-4 py-3">{t('leaderboard.track')}</th>
-                  <th className="px-4 py-3">{t('leaderboard.driver')}</th>
-                  <th className="px-4 py-3">{t('leaderboard.bestTime')}</th>
-                  <th className="px-4 py-3">{t('leaderboard.date')}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {leaderboardData.map((entry) => (
-                  <tr
-                    key={`${entry.driver}-${entry.date}`}
-                    className="border-t border-white/10"
-                  >
-                    <td className="px-4 py-3 text-foreground">{entry.track}</td>
-                    <td className="px-4 py-3">{entry.driver}</td>
-                    <td className="px-4 py-3">{formatTime(entry.bestTime)}</td>
-                    <td className="px-4 py-3">{entry.date}</td>
+        <div className="space-y-6">
+          <div className="rounded-3xl border border-white/10 bg-black/40 p-4">
+            <h3 className="text-xl font-heading text-foreground">Leaderboard démo</h3>
+            <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
+              {t('leaderboard.subtitle')}
+            </p>
+            <div className="mt-3 overflow-hidden rounded-2xl border border-white/10">
+              <table className="w-full text-left text-sm text-muted-foreground">
+                <thead className="bg-black/40 text-xs uppercase tracking-[0.3em] text-muted-foreground">
+                  <tr>
+                    <th className="px-4 py-3">{t('leaderboard.track')}</th>
+                    <th className="px-4 py-3">{t('leaderboard.driver')}</th>
+                    <th className="px-4 py-3">{t('leaderboard.bestTime')}</th>
+                    <th className="px-4 py-3">{t('leaderboard.date')}</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {leaderboardData.map((entry) => (
+                    <tr
+                      key={`${entry.driver}-${entry.date}`}
+                      className="border-t border-white/10"
+                    >
+                      <td className="px-4 py-3 text-foreground">{entry.track}</td>
+                      <td className="px-4 py-3">{entry.driver}</td>
+                      <td className="px-4 py-3">{formatTime(entry.bestTime)}</td>
+                      <td className="px-4 py-3">{entry.date}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
+          <LeaderboardChart data={leaderboardData} />
         </div>
       </section>
       <section>

@@ -237,7 +237,10 @@ export function GroupQuote() {
               )}
             </div>
           </div>
-          <div className="space-y-4 rounded-3xl border border-white/10 bg-surface/60 p-6">
+          <div
+            className="space-y-4 rounded-3xl border border-white/10 bg-surface/60 p-6"
+            aria-live="polite"
+          >
             <h3 className="text-xl font-heading text-foreground">Estimation</h3>
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li>Location piste: {estimate.trackCost} €</li>
