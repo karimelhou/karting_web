@@ -1,7 +1,7 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -21,6 +21,9 @@ const steps = ['when', 'who', 'what', 'review'] as const;
 
 export function ReservationWizard() {
   const t = useTranslations();
+  const stepLabels = steps.map((step) =>
+    t(`reservation.steps.${step}` as Parameters<typeof t>[0]),
+  );
   const form = useForm<z.infer<typeof reservationSchema>>({
     resolver: zodResolver(reservationSchema),
     defaultValues: {
@@ -38,6 +41,7 @@ export function ReservationWizard() {
   });
   const [activeStep, setActiveStep] = useState(0);
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const prefersReducedMotion = useReducedMotion();
 
   const values = form.watch();
   const estimate = computeReservationEstimate({
@@ -113,16 +117,20 @@ export function ReservationWizard() {
         </div>
         <Progress value={progress} />
         <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
-          Étape {activeStep + 1} / {steps.length}
+          {t('reservation.progressLabel', {
+            current: activeStep + 1,
+            total: steps.length,
+            step: stepLabels[activeStep],
+          })}
         </p>
       </div>
       <Form {...form}>
         <form className="mt-8 space-y-8" onSubmit={form.handleSubmit(onSubmit)}>
           <motion.div
             key={activeStep}
-            initial={{ opacity: 0, y: 12 }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.3 }}
             className="grid gap-6 md:grid-cols-2"
           >
             {activeStep === 0 && (

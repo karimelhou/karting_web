@@ -1,6 +1,6 @@
 'use client';
 
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 import { testimonials } from '@/lib/testimonials';
@@ -8,23 +8,32 @@ import { testimonials } from '@/lib/testimonials';
 export function TestimonialCarousel() {
   const [index, setIndex] = useState(0);
   const activeTestimonial = testimonials[index];
+  const prefersReducedMotion = useReducedMotion();
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
+    if (prefersReducedMotion || isPaused) return;
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % testimonials.length);
     }, 6000);
     return () => clearInterval(timer);
-  }, []);
+  }, [prefersReducedMotion, isPaused]);
 
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-surface/80 p-8">
+    <div
+      className="relative overflow-hidden rounded-3xl border border-white/10 bg-surface/80 p-8"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onFocus={() => setIsPaused(true)}
+      onBlur={() => setIsPaused(false)}
+    >
       <AnimatePresence mode="wait">
         <motion.div
           key={activeTestimonial.name}
-          initial={{ opacity: 0, y: 12 }}
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -12 }}
-          transition={{ duration: 0.4 }}
+          exit={prefersReducedMotion ? undefined : { opacity: 0, y: -12 }}
+          transition={{ duration: prefersReducedMotion ? 0 : 0.4 }}
           className="space-y-4"
         >
           <p className="text-lg text-foreground">“{activeTestimonial.message}”</p>

@@ -127,6 +127,7 @@
       "what": "Which package?",
       "review": "Summary"
     },
+    "progressLabel": "Step {current} / {total} — {step}",
     "packages": {
       "session": "Open session",
       "mini": "Mini Grand Prix",
@@ -143,11 +144,32 @@
     "title": "Track status",
     "open": "Track open",
     "closed": "Track closed",
+    "statusWeather": "Weather alert",
     "weather": "Local weather",
     "updated": "Updated",
     "nextSlot": "Next slot"
   },
   "faq": {
     "title": "Frequently asked questions"
+  },
+  "events": {
+    "title": "Upcoming agenda",
+    "intro": "Adjust this section with your real calendar: camps, night races, afterworks.",
+    "filters": {
+      "tracks": {
+        "label": "Track",
+        "all": "All tracks",
+        "550": "550 m",
+        "1150": "1150 m"
+      },
+      "categories": {
+        "label": "Category",
+        "all": "All formats",
+        "family": "Family & kids",
+        "competition": "Competition",
+        "corporate": "Corporate"
+      },
+      "empty": "No event matches these filters yet. Reach out to tailor your programme."
+    }
   }
 }

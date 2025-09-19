@@ -8,6 +8,13 @@ export const CONTACT = {
   lng: 5.9403,
 };
 
+export const TRACK_STATUS = {
+  state: 'open' as 'open' | 'closed' | 'weather',
+  message: 'Ouvert - conditions idéales',
+  nextSlot: 'Prochain départ à 14h30',
+  updatedAt: 'Mise à jour 30 min',
+};
+
 export const TRACKS = [
   {
     slug: '550m',

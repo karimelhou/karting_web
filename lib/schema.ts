@@ -1,9 +1,12 @@
+import { getSiteUrl } from './utils';
+
 export function organizationSchema() {
+  const siteUrl = getSiteUrl();
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Karting Évasion Rumilly',
-    url: 'https://karting-evasion.example',
+    url: siteUrl,
     logo: '/icons/icon-512.svg',
     sameAs: [
       'https://www.facebook.com/karting.evasion.rumilly',
@@ -14,10 +17,12 @@ export function organizationSchema() {
 }
 
 export function localBusinessSchema() {
+  const siteUrl = getSiteUrl();
   return {
     '@context': 'https://schema.org',
     '@type': 'SportsActivityLocation',
     name: 'Karting Évasion Rumilly',
+    url: siteUrl,
     image: [
       'https://upload.wikimedia.org/wikipedia/commons/7/75/Karting_Lehner_2009.jpg',
     ],
@@ -66,5 +71,43 @@ export function faqSchema(items: Array<{ question: string; answer: string }>) {
         text: item.answer,
       },
     })),
+  };
+}
+
+export function articleSchema({
+  title,
+  description,
+  slug,
+  image,
+}: {
+  title: string;
+  description: string;
+  slug: string;
+  image?: string;
+}) {
+  const siteUrl = getSiteUrl();
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    image: image ? [image] : undefined,
+    author: {
+      '@type': 'Organization',
+      name: 'Karting Évasion Rumilly',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Karting Évasion Rumilly',
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteUrl}/icons/icon-192.svg`,
+      },
+    },
+    datePublished: new Date().toISOString(),
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${siteUrl}/actu/${slug}`,
+    },
   };
 }
